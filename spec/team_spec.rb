@@ -38,7 +38,6 @@ RSpec.describe Team do
 
     @team.add_player(mbappe)
     @team.add_player(pogba)
-    # binding.pry
 
     expect(@team.players_by_position("midfielder")).to eq([pogba])
     expect(@team.players_by_position("forward")).to eq([mbappe])
