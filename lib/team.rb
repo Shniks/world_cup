@@ -1,4 +1,3 @@
-require 'pry'
 class Team
 
   attr_reader :country, :players
