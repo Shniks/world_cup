@@ -1,3 +1,5 @@
+require 'simplecov'
+SimpleCov.start
 require './spec/spec_helper'
 require './lib/player'
 require 'pry'
