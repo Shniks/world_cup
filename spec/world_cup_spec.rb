@@ -43,4 +43,14 @@ RSpec.describe WorldCup do
     expect(expectation).to eq(result)
   end
 
+  it 'should find all players by position' do
+    result = {
+              "forward" => [@mbappe],
+              "midfielder" => [@pogba, @modric],
+              "defender" => [@vida]
+              }
+
+    expect(@world_cup.all_players_by_position).to eq(result)
+  end
+
 end
