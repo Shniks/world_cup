@@ -14,4 +14,8 @@ class Team
     false
   end
 
+  def add_player(player)
+    players << player 
+  end
+
 end
