@@ -1,3 +1,4 @@
+require 'pry'
 class Team
 
   attr_reader :country, :players
@@ -15,7 +16,11 @@ class Team
   end
 
   def add_player(player)
-    players << player 
+    players << player
+  end
+
+  def players_by_position(position)
+    players.select { |player| player.position == position }
   end
 
 end
