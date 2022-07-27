@@ -7,16 +7,16 @@ require 'pry'
 RSpec.describe WorldCup do
   before do
     @france = Team.new("France")
-    mbappe = Player.new({name: "Kylian Mbappe", position: "forward"})
-    pogba = Player.new({name: "Paul Pogba", position: "midfielder"})
-    @france.add_player(mbappe)
-    @france.add_player(pogba)
+    @mbappe = Player.new({name: "Kylian Mbappe", position: "forward"})
+    @pogba = Player.new({name: "Paul Pogba", position: "midfielder"})
+    @france.add_player(@mbappe)
+    @france.add_player(@pogba)
 
     @croatia = Team.new("Croatia")
-    modric = Player.new({name: "Luka Modric", position: "midfielder"})
-    vida = Player.new({name: "Domagoj Vida", position: "defender"})
-    @croatia.add_player(modric)
-    @croatia.add_player(vida)
+    @modric = Player.new({name: "Luka Modric", position: "midfielder"})
+    @vida = Player.new({name: "Domagoj Vida", position: "defender"})
+    @croatia.add_player(@modric)
+    @croatia.add_player(@vida)
 
     @world_cup = WorldCup.new(2018, [@france, @croatia])
   end
@@ -28,6 +28,19 @@ RSpec.describe WorldCup do
   it 'should add teams to a world cup' do
     expect(@world_cup.year).to eq(2018)
     expect(@world_cup.teams).to eq([@france, @croatia])
+  end
+
+  it 'should find active players by position' do
+    expectation = @world_cup.active_players_by_position("midfielder")
+    result = [@pogba, @modric]
+
+    expect(expectation).to eq(result)
+
+    @croatia.eliminated = true
+    expectation = @world_cup.active_players_by_position("midfielder")
+    result = [@pogba]
+
+    expect(expectation).to eq(result)
   end
 
 end
