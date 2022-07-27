@@ -5,17 +5,17 @@ require './lib/player'
 require 'pry'
 
 RSpec.describe Player do
-  it 'should be an instance of an object' do
-    player = Player.new({name: "Luka Modric", position: "midfielder"})
+  before do
+    @player = Player.new({name: "Luka Modric", position: "midfielder"})
+  end
 
-    expect(player).to be_a Player
+  it 'should be an instance of an object' do
+    expect(@player).to be_a Player
   end
 
   it 'has attributes' do
-    player = Player.new({name: "Luka Modric", position: "midfielder"})
-
-    expect(player.name).to eq("Luka Modric")
-    expect(player.position).to eq("midfielder")
+    expect(@player.name).to eq("Luka Modric")
+    expect(@player.position).to eq("midfielder")
   end
 
 end
